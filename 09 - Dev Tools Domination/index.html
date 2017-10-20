@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Console Tricks!</title>
+</head>
+<body>
+
+  <p onClick="makeGreen()">×BREAK×DOWN×</p>
+
+  <script>
+    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+
+    function makeGreen() {
+      const p = document.querySelector('p');
+      p.style.color = '#BADA55';
+      p.style.fontSize = '50px';
+    }
+
+    // Regular
+    console.log("This is console.log command");
+
+    // Interpolated
+    console.log('Hey there %s','Sourav Dash');
+
+    // Styled
+    console.log('%cHey there Sourav Dash','font-size: 2em;background: green;padding: 5px;');
+
+    // warning!
+    console.warn('Something wrong happened');
+
+    // Error :|
+    console.error('Error');
+
+    // Info
+    console.info("India's capital city is delhi");
+
+    // Testing
+    console.assert(document.querySelector('p').classList.contains('x'),'You did not select right element');
+
+    // clearing
+    console.clear();
+
+    // Viewing DOM Elements
+    console.log(document.querySelector('p'));
+    console.dir(document.querySelector('p'));
+
+    // Grouping together
+    const group = dogs.map( dog => {
+      // console.group(`${dog.name}`);
+      console.groupCollapsed(`${dog.name}`);
+      console.log(`This is ${dog.name}`);
+      console.log(`${dog.name} is ${dog.age} years old.`);
+      console.log(`${dog.name} is ${dog.age*7} dog years old.`);
+      console.groupEnd(`${dog.name}`);
+    });
+
+    // counting
+    console.count('sourav');
+    console.count('sourav');
+    console.count('dash');
+    console.count('sourav');
+    console.count('sourav');
+    console.count('dash');
+    console.count('sourav');
+    console.count('dash');
+
+    // timing
+    console.time('fetch');
+    fetch('https://api.github.com/users/wesbos')
+      .then(data => data.json())
+      .then(data => {
+        console.timeEnd('fetch');
+        console.log(data);
+      });
+
+  </script>
+</body>
+</html>
