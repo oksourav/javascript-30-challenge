@@ -1,81 +1,98 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>CSS Variables</title>
-	<style type="text/css">
-		:root{
-			--base: #fefefe;
-			--spacing: 10px;
-			--blur: 10px;
-		}
+  <head>
+    <title>CSS Variables</title>
+    <style type="text/css">
+      :root {
+        --base: #fefefe;
+        --spacing: 10px;
+        --blur: 10px;
+      }
 
-		body{
-			padding: 0;
-			margin: 0;
-			position: absolute;
-		}
+      body {
+        padding: 0;
+        margin: 0;
+        position: absolute;
+      }
 
-		.container{
-			width: 70%;
-			margin: 0 auto;
-			background-color: rgba(0, 150, 136, 0.69);
-		}
+      .container {
+        width: 70%;
+        margin: 0 auto;
+        background-color: rgba(0, 150, 136, 0.69);
+      }
 
-		h1{
-			text-align: center;
-			color: #fff;
-			width: 50%;
-			margin: 0 auto;
-			padding-top: 30px;
-			padding-bottom: 30px;
-			font-size: 2.6em;
-		}
+      h1 {
+        text-align: center;
+        color: #fff;
+        width: 50%;
+        margin: 0 auto;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        font-size: 2.6em;
+      }
 
-		.control{
-			width: 80%;
-			margin: 0 auto;
-		}
+      .control {
+        width: 80%;
+        margin: 0 auto;
+      }
 
-		label{
-			font-size: 2em;
-			color: #fff;
-		}
+      label {
+        font-size: 2em;
+        color: #fff;
+      }
 
-		img{
-			width: 60%;
-			margin: 40px 20%;
-			background-color: var(--base);
-			padding: var(--spacing);
-			filter: blur(var(--blur));
-		}
-	</style>
-</head>
-<body>
-	<div class="container">
-		<h1>Update CSS Variable with JS</h1>
-			<div class="control">
-				<label>Spacing</label>
-				<input type="range" name="spacing" min="0" max="200" value="10" data-sizing="px" >
+      img {
+        width: 60%;
+        margin: 40px 20%;
+        background-color: var(--base);
+        padding: var(--spacing);
+        filter: blur(var(--blur));
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Update CSS Variable with JS</h1>
+      <div class="control">
+        <label>Spacing</label>
+        <input
+          type="range"
+          name="spacing"
+          min="0"
+          max="200"
+          value="10"
+          data-sizing="px"
+        />
 
-				<label>Blur</label>
-				<input type="range" name="blur" min="0" max="200" value="10" data-sizing="px" >
+        <label>Blur</label>
+        <input
+          type="range"
+          name="blur"
+          min="0"
+          max="200"
+          value="10"
+          data-sizing="px"
+        />
 
-				<label>Base Color</label>
-				<input type="color" name="base" value="#fefefe" >
-			</div>
+        <label>Base Color</label>
+        <input type="color" name="base" value="#fefefe" />
+      </div>
 
-		<img src="bg.jpg" />
-	</div>
-</body>
-<script type="text/javascript">
-	var node = document.querySelectorAll('input');
+      <img src="bg.jpg" />
+    </div>
+  </body>
+  <script type="text/javascript">
+    var node = document.querySelectorAll("input");
 
-	node.forEach(input => input.addEventListener('change',handleUpdate));
-	node.forEach(input => input.addEventListener('mousemove',handleUpdate));
+    node.forEach((input) => input.addEventListener("change", handleUpdate));
+    node.forEach((input) => input.addEventListener("mousemove", handleUpdate));
 
-	function handleUpdate() {
-		const suffix = this.dataset.sizing || '';
-		document.documentElement.style.setProperty(`--${this.name}`,`${this.value}${suffix}`);
-	}
-</script>
+    function handleUpdate() {
+      const suffix = this.dataset.sizing || "";
+      document.documentElement.style.setProperty(
+        `--${this.name}`,
+        `${this.value}${suffix}`
+      );
+    }
+  </script>
 </html>
